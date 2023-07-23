@@ -43,6 +43,9 @@ const NavigationBar = () => {
                 <NavLink to="/colleges">Colleges</NavLink>
               </li>
               <li className="">
+                <NavLink to="/admission">Admission</NavLink>
+              </li>
+              <li className="">
                 <NavLink to="/my-college">My College</NavLink>
               </li>
             </ul>

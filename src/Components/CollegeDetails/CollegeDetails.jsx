@@ -82,7 +82,7 @@ const CollegeDetails = () => {
 
           <div className="flex justify-center my-5">
           <Link
-            to={`/colleges/${_id}`}
+            to={`/admission/${_id}`}
             className="uppercase apply-btn text-my-text"
           >
             Apply Now

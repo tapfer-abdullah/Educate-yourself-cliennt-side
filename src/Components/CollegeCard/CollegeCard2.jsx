@@ -30,7 +30,8 @@ const CollegeCard = ({ college }) => {
       </div>
 
       <div className="p-3 text-my-p text-justify">
-        <h3 className="text-xl mb-2 font-semibold text-my-text">
+        <h3
+          className="text-xl mb-2 font-semibold text-my-text">
           {college_name}
         </h3>
         <p>

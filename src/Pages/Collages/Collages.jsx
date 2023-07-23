@@ -14,6 +14,10 @@ const Collages = () => {
       });
   }, []);
 
+  if(colleges.length == 0){
+    return <p className="pt-20 text-center">Loading.......</p>
+  }
+
   return (
     <div className="py-16 max-w-7xl mx-auto">
       <CollegeCardsSection colleges={colleges}></CollegeCardsSection>

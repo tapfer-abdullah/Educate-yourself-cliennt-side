@@ -8,6 +8,8 @@ import Collages from "../Pages/Collages/Collages";
 import MyCollage from "../Pages/MyCollage/MyCollage";
 import Home from "../Pages/MainLayout/Home/Home";
 import CollegeDetails from "../Components/CollegeDetails/CollegeDetails";
+import Admission from "../Pages/MainLayout/Admission/Admission";
+import ApplyPage from "../Pages/MainLayout/Admission/ApplyPage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/colleges",
         element: <Collages></Collages>,
+      },
+      {
+        path: "/admission",
+        element: <Admission></Admission>,
+      },
+      {
+        path: "/admission/:id",
+        element: <ApplyPage></ApplyPage>,
       },
       {
         path: "/my-college",
