@@ -5,7 +5,7 @@ form{
     width: 100%;
 }
 
-input{
+.admission-form input{
     /* border: 1px solid black; */
     width: 100%;
     background-color: rgb(254 251 251 / 10%);

@@ -1,0 +1,26 @@
+
+textarea{
+    border: 1px solid black;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.review-btn{
+    background-color: #fec722;
+    border: none;
+    transition: all .5s ease;
+    color: black;
+    font-weight: 600;
+    padding: 5px 20px;
+}
+
+.review-btn:hover{
+    background-color: #3EB075;
+    color: white;
+}
+
+.review-btn-div{
+    display: flex;
+    justify-content: center;
+}

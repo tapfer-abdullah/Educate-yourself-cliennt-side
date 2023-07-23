@@ -17,7 +17,7 @@ const ApplyPage = () => {
   let date = new Date().toJSON();
 
   const imageHostingKey = import.meta.env.VITE_API_KEY;
-  const imageHostingURL = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostingKey}`;
+  const imageHostingURL = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
   const {
     register,
@@ -82,7 +82,7 @@ const ApplyPage = () => {
         <div>
           <img src={admissionImg} alt="" />
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="">
+        <form onSubmit={handleSubmit(onSubmit)} className="admission-form">
           <div className="two-input-field">
             <div>
               <h4>First Name</h4>
