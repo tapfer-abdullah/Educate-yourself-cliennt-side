@@ -1,0 +1,53 @@
+
+form{
+    padding: 50px;
+    background-color: #FAFCFE;
+    width: 100%;
+}
+
+.admission-form input{
+    /* border: 1px solid black; */
+    width: 100%;
+    background-color: rgb(254 251 251 / 10%);
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px 0px;
+    padding: 5px 10px;
+    margin: 5px 0 25px 0;
+}
+
+.two-input-field{
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+}
+
+.two-input-field div{
+    width: 100%;
+}
+
+.submit-btn{
+    background-color: #fec722 !important;
+    border: none;
+    transition: all .5s ease;
+    color: black;
+    font-weight: 600;
+}
+.submit-btn:hover{
+    background-color: #3EB075 !important;
+    color: white;
+}
+
+select{
+    width: 100%;
+    background-color: rgb(254 251 251 / 10%);
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px 0px;
+    padding: 5px 10px;
+    margin: 5px 0 25px 0;
+    color: black;
+}
+
+select option{
+    background-color: #F6F8FC;
+    
+}

@@ -11,6 +11,7 @@ import CollegeDetails from "../Components/CollegeDetails/CollegeDetails";
 import Admission from "../Pages/MainLayout/Admission/Admission";
 import ApplyPage from "../Pages/MainLayout/Admission/ApplyPage";
 import Profile from "../Pages/MainLayout/Profile/Profile";
+import EditProfile from "../Pages/MainLayout/Profile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/profile/:id",
+        element: <EditProfile></EditProfile>,
       },
     ],
   },

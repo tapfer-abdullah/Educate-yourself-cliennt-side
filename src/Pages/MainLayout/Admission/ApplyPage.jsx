@@ -46,7 +46,7 @@ const ApplyPage = () => {
             collegeId: params.id,
             applicationTime: date,
           };
-          console.log(candidateInfo);
+          // console.log(candidateInfo);
           //   console.log(imageResponse);
 
           fetch("http://localhost:5000/admission", {
@@ -157,7 +157,7 @@ const ApplyPage = () => {
           <div>
             <input
               required
-              className="submit-btn"
+              className="submit-btn cursor-pointer"
               type="submit"
               value="SUBMIT"
             />

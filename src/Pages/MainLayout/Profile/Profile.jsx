@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthPages/AuthProvider";
 import { RotatingTriangles } from "react-loader-spinner";
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUserEdit } from "react-icons/fa";
 
 const Profile = () => {
   const { user, loading } = useContext(AuthContext);
@@ -15,7 +15,7 @@ const Profile = () => {
       .then((c) => setData(c));
   }, [user]);
 
-  console.log(data);
+//   console.log(data);
 
   const {
     firstName,
@@ -29,6 +29,7 @@ const Profile = () => {
     email,
     photo,
     subject,
+    _id
   } = data;
 
   if (loading) {
@@ -58,7 +59,7 @@ const Profile = () => {
           <h3 className="text-3xl font-semibold my-5 text-center">
             Information of{" "}
             <span className="text-my-primary">
-              {firstName + " " + LastName}
+              {firstName}
             </span>
           </h3>
 
@@ -77,7 +78,6 @@ const Profile = () => {
             {email}
           </p>
 
-          
           <p>
             <span className="font-semibold text-my-text">Phone Number: </span>
             {PhoneNumber}
@@ -97,7 +97,7 @@ const Profile = () => {
             {subject}
           </p>
 
-
+          <div className="flex items-center justify-between">
             <p className="my-2">
               <span className="font-semibold text-my-text">
                 Admission Date:{" "}
@@ -105,7 +105,11 @@ const Profile = () => {
               {applicationTime?.slice(0, 10)}
             </p>
 
-
+            <Link to={`/profile/${_id}`} className="flex items-center gap-3 btn btn-sm btn-success text-white hover:bg-my-secondary hover:shadow-lg">
+              <FaUserEdit className="text-lg"></FaUserEdit>
+              <span>Edit Info</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
