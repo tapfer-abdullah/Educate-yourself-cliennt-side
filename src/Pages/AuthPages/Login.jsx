@@ -14,11 +14,12 @@ const Login = () => {
   const [seePass, setSeePass] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
-  const from = location.state?.path || location.state?.pathname || "/";
+  // console.log(location);
+  const from = location.state?.from || location.state?.pathname || "/";
+  // console.log(location.state)
 
   //   const [disable, setDisable] = useState(true);
-  const { user, Login, LoginWithGoogle } = useContext(AuthContext);
+  const { user, Login, LoginWithGoogle, LoginWithGithub, handleForgetPassword } = useContext(AuthContext);
   const [errorM, setErrorM] = useState("");
 
   const handleLogin = (e) => {
@@ -52,38 +53,6 @@ const Login = () => {
   const handleGoogle = () => {
     LoginWithGoogle()
       .then((result) => {
-        const loggedUser = result.user;
-        const newUser = {
-          name: loggedUser.displayName,
-          email: loggedUser.email,
-          photo: loggedUser.photoURL,
-          designation: "Student",
-        };
-
-        // fetch("https://assignment12-server-sepia.vercel.app/user", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(newUser),
-        // })
-        //   .then((res) => res.json())
-        //   .then((d) => {
-        //     // console.log("db",d)
-        //     if (d.insertedId) {
-        //       // alert("Register success");
-        //       Swal.fire({
-        //         title: `Login successful! Thanks, ${loggedUser.displayName}`,
-        //         showClass: {
-        //           popup: "animate__animated animate__fadeInDown",
-        //         },
-        //         hideClass: {
-        //           popup: "animate__animated animate__fadeOutUp",
-        //         },
-        //       });
-        //     }
-        //   });
-        // console.log(result);
         navigate(from);
       })
       .catch((err) => {
@@ -92,12 +61,55 @@ const Login = () => {
       });
   };
 
+  const handleGithub = () => {
+    LoginWithGithub()
+      .then((result) => {
+        navigate(from);
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrorM(err.message);
+      });
+  };
+
+  const handlePassword = async()=>{
+    
+    const { value: email } = await Swal.fire({
+      title: 'Inter your email address',
+      input: 'email',
+      // inputLabel: 'Your email address',
+      inputPlaceholder: 'Enter your email address'
+    })
+    
+    if (email) {
+      // Swal.fire(`Entered email: ${email}`)
+
+      handleForgetPassword(email)
+      .then(()=>{
+        
+        Swal.fire({
+          title: 'Password reset email sent!',
+          text: `To this email: ${email}`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      })
+      .catch(error => {
+        Swal.fire(`Error Message: ${error.message}`);
+      })
+    }
+  }
+
   return (
     <>
     
       <div className="flex justify-center items-center">
-      <Link to="/" className="text-3xl font-bold text-center title-text">Abdullah</Link>
-        <div className="p-5 md:p-10 rounded-lg">
+      <Link to="/" className="text-3xl font-bold text-center title-text">Educate YourSelf</Link>
+        <div className="p-5 rounded-lg">
           <div className="hero p-5 md:px-10 md:py-5 shadow-lg rounded-lg shadow-slate-950/50 bg-my-bg1">
             <form
               onSubmit={handleLogin}
@@ -105,9 +117,8 @@ const Login = () => {
             >
               <div className="text-center lg:text-left"></div>
               <div className="card flex-shrink-0 w-full max-w-md">
-                <h3 className="text-2xl text-center font-semibold mb-3">
-                  Please Log in
-                </h3>
+              <Link to="/" className="text-3xl font-bold text-center title-text">Please Login</Link>
+            <div className="divider"></div>
 
                 <div className="card-body">
                   <div className="form-control">
@@ -158,6 +169,7 @@ const Login = () => {
                       Login
                     </button>
                   </div>
+                  <p onClick={handlePassword} className="text-my-secondary cursor-pointer hover:underline">Forgot Password</p>
                   <p className="text-my-secondary text-center my-2">
                     Don't have an account?
                     <Link to="/register" className="ml-1 hover:link">
@@ -173,7 +185,7 @@ const Login = () => {
                       <FaGoogle className="text-2xl"></FaGoogle>{" "}
                     </Link>
                     <Link
-                      onClick={handleGoogle}
+                      onClick={handleGithub}
                       className="btn btn-circle btn-outline text-center text-my-secondary hover:text-white hover:bg-my-primary hover:border-my-primary"
                     >
                       <FaGithub className="text-2xl"></FaGithub>{" "}

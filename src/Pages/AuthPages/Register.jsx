@@ -9,7 +9,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const Register = () => {
-  const { UpdateUser, Register, LoginWithGoogle } = useContext(AuthContext);
+  const { UpdateUser, Register, LoginWithGoogle, LoginWithGithub } =
+    useContext(AuthContext);
   const [seePass, setSeePass] = useState(true);
 
   const [passwordError, setPasswordError] = useState("");
@@ -28,7 +29,7 @@ const Register = () => {
   //   const { Register, UpdateUser, LoginWithGoogle } = useContext(AuthContext);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     Register(data.email, data.password)
       .then((result) => {
@@ -43,34 +44,18 @@ const Register = () => {
               photo: data.photoUrl,
               designation: "Student",
             };
-            console.log(newUser);
 
-            // fetch("https://assignment12-server-sepia.vercel.app/user",{
-            //   method: "POST",
-            //   headers: {
-            //     "Content-Type": "application/json",
-            //   },
-            //   body: JSON.stringify(newUser),
-            // }
-            // )
-            // .then(res => res.json())
-            // .then(d => {
-            //   // console.log("db",d)
-            //   if(d.insertedId){
-            //     // alert("Register success")
-            //     Swal.fire({
-            //       title: `Registration successful! Thanks, ${data.name}`,
-            //       showClass: {
-            //         popup: 'animate__animated animate__fadeInDown'
-            //       },
-            //       hideClass: {
-            //         popup: 'animate__animated animate__fadeOutUp'
-            //       }
-            //     })
-            //   }
-            // })
-
-            // navigate("/");
+            Swal.fire({
+              title: `Registration successful!`,
+              showClass: {
+                popup: "animate__animated animate__fadeInDown",
+              },
+              hideClass: {
+                popup: "animate__animated animate__fadeOutUp",
+              },
+            });
+            // console.log(result)
+            navigate("/");
           })
           .catch("Unable to update profile!");
       })
@@ -83,39 +68,35 @@ const Register = () => {
   const handleGoogle = () => {
     LoginWithGoogle()
       .then((result) => {
-        const loggedUser = result.user;
-        const newUser = {
-          name: loggedUser.displayName,
-          email: loggedUser.email,
-          photo: loggedUser.photoURL,
-          designation: "Student",
-        };
-
-        // fetch("https://assignment12-server-sepia.vercel.app/user",{
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(newUser),
-        // }
-        // )
-        // .then(res => res.json())
-        // .then(d => {
-        //   console.log("db",d)
-        //   if(d.insertedId){
-        //     // alert("Register success")
-        //     Swal.fire({
-        //       title: `Registration successful! Thanks, ${loggedUser.displayName}`,
-        //       showClass: {
-        //         popup: 'animate__animated animate__fadeInDown'
-        //       },
-        //       hideClass: {
-        //         popup: 'animate__animated animate__fadeOutUp'
-        //       }
-        //     })
-        //   }
-        // })
-
+        Swal.fire({
+          title: `Registration successful!`,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        // console.log(result)
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setPasswordError(err.message);
+      });
+  };
+  const handleGithub = () => {
+    LoginWithGithub()
+      .then((result) => {
+        Swal.fire({
+          title: `Registration successful!`,
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
         // console.log(result)
         navigate("/");
       })
@@ -139,13 +120,6 @@ const Register = () => {
       setEmptyP(true);
     }
   };
-  //   const handleCPassword = (event) => {
-  //     if (event.target.value) {
-  //       setEmptyCP(false);
-  //     } else {
-  //       setEmptyCP(true);
-  //     }
-  //   };
 
   useEffect(() => {
     // console.log(emptyE == true && emptyP == true && emptyCP == true);
@@ -166,9 +140,11 @@ const Register = () => {
           >
             <div className="text-center lg:text-left"></div>
             <div className="card flex-shrink-0 w-full max-w-md">
-              <h3 className="text-2xl text-center font-semibold mb-3">
+            <Link to="/" className="text-3xl font-bold text-center title-text">Please Register</Link>
+            <div className="divider"></div>
+              {/* <h3 className="text-2xl text-center font-semibold mb-3">
                 Please Register
-              </h3>
+              </h3> */}
 
               <div className="card-body">
                 <div className="flex gap-3 justify-center w-full">
@@ -266,63 +242,6 @@ const Register = () => {
                   </div>
                 </div>
 
-                {/* <div onBlur={handleCPassword} className="form-control">
-                  <label className="label">
-                    <span className="label-text">Confirm Password</span>
-                  </label>
-                  <input
-                    {...register("confirmPassword", {
-                      required: true,
-                      minLength: 6,
-                      maxLength: 32,
-                      pattern:
-                        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]).{6,}$/i,
-                    })}
-                    name="confirmPassword"
-                    type={`${seePass ? "password" : "text"}`}
-                    placeholder="Confirm Password"
-                    className="input input-bordered"
-                  />
-
-                  {seePass && (
-                    <span
-                      className="my-1 text-xs mx-2"
-                      onClick={() => setSeePass(!seePass)}
-                    >
-                      See password
-                    </span>
-                  )}
-                  {!seePass && (
-                    <span
-                      className="my-1 text-xs mx-2"
-                      onClick={() => setSeePass(!seePass)}
-                    >
-                      Hide password
-                    </span>
-                  )}
-
-                  {errors.confirmPassword?.type == "required" && (
-                    <span className="text-red-600 my-2">
-                      Password is required
-                    </span>
-                  )}
-                  {errors.confirmPassword?.type == "pattern" && (
-                    <span className="text-red-600 my-2">
-                      Password must contain at least six characters including at
-                      least 1 upper case and 1 special character
-                    </span>
-                  )}
-                  {(errors.confirmPassword?.type == "minLength" ||
-                    errors.confirmPassword?.type == "maxLength") && (
-                    <span className="text-red-600 my-2">
-                      Password should be between 6 to 32 characters is required
-                    </span>
-                  )}
-                  {passwordError && (
-                    <span className="text-red-600 my-2">{passwordError}</span>
-                  )}
-                </div> */}
-
                 <div className="form-control mt-6 w-full">
                   <input
                     disabled={btnDisable}
@@ -347,7 +266,7 @@ const Register = () => {
                     <FaGoogle className="text-2xl"></FaGoogle>{" "}
                   </Link>
                   <Link
-                    onClick={handleGoogle}
+                    onClick={handleGithub}
                     className="btn btn-circle btn-outline text-center text-my-secondary hover:text-white hover:bg-my-primary hover:border-my-primary"
                   >
                     <FaGithub className="text-2xl"></FaGithub>{" "}

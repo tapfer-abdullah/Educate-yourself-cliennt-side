@@ -1,13 +1,11 @@
 .hidden-ul{
     text-align: center;
-    /* transform: translateY(10px); */
     width: 100vw;
     position: absolute;
     right: -12px;
     margin-top: 25px;
-    color: #0A0A0F;
-    /* opacity: .50; */
-    /* background: transparent; */
+    /* color: #0A0A0F; */
+    color: white;
     transition: 0.50s ease;
 
 }

@@ -58,17 +58,17 @@ const ApplyPage = () => {
           })
             .then((res) => res.json())
             .then((message) => {
-            //   console.log(message);
-            if(message.insertedId){
+              //   console.log(message);
+              if (message.insertedId) {
                 Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Admission Completed',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                  position: "center",
+                  icon: "success",
+                  title: "Admission Completed",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
                 reset();
-            }
+              }
             });
         }
       });
@@ -76,13 +76,16 @@ const ApplyPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto pt-14">
-      <SectionTitle title={"College Admission Form"}></SectionTitle>
-
       <div className="w-full grid grid-cols-2 items-center">
         <div>
           <img src={admissionImg} alt="" />
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="admission-form">
+          <h3 className="text-center text-3xl font-semibold my-5 text-my-primary">
+            College Admission Form
+          </h3>
+          <div className="divider"></div>
+
           <div className="two-input-field">
             <div>
               <h4>First Name</h4>

@@ -10,17 +10,19 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthPages/AuthProvider";
 // import { NavLink } from "react-router-dom";
 
-
 const NavigationBar = () => {
-  const {user} = useContext(AuthContext);
+  const { user, Logout } = useContext(AuthContext);
   const [liHide, setLiHide] = useState(true);
 
   const visibleNav = () => {
     setLiHide(!liHide);
   };
 
-
-  // console.log(path)
+  const handleLogout = () => {
+    Logout()
+      .then(() => {})
+      .catch((error) => console.log(error.message));
+  };
 
   return (
     <>
@@ -52,14 +54,37 @@ const NavigationBar = () => {
           </div>
 
           <div className="hidden lg:block">
-          <div className="flex gap-2 items-center">
-            <NavLink title="View Profile" to="/profile">{user?.displayName}</NavLink>
-            <Link title="View Profile" to="/profile"><img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full"/></Link>
-            {
-              user ? <Link className="btn btn-outline btn-sm btn-success ">Logout</Link> :
-              <Link to="/login" className="btn btn-outline btn-sm btn-success ">Login</Link>
-            }
-          </div>
+            <div className="flex gap-2 items-center">
+              {user && (
+                <>
+                  <NavLink title="View Profile" to="/profile">
+                    {user?.displayName}
+                  </NavLink>
+                  <Link title="View Profile" to="/profile">
+                    <img
+                      src={user?.photoURL}
+                      alt=""
+                      className="w-10 h-10 rounded-full"
+                    />
+                  </Link>
+                </>
+              )}
+              {user ? (
+                <Link
+                  onClick={handleLogout}
+                  className="btn btn-outline btn-sm btn-success "
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn btn-outline btn-sm btn-success "
+                >
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
 
           {/* nav bar for phone  */}
@@ -78,26 +103,65 @@ const NavigationBar = () => {
               )}
             </div>
             <ul
-              className="py-5 hidden-ul bg-opacity-70 bg-my-bg2 lg:hidden"
+              className="py-5 hidden-ul bg-opacity-70 bg-my-p  lg:hidden"
               hidden={liHide}
               onClick={() => setLiHide(true)}
             >
               <li className="lg:hidden list-none">
-                <NavLink to="/">
-                  Home
-                </NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <div className="divider"></div>
               <li className="lg:hidden list-none">
-                <NavLink to="/colleges">
-                Colleges
-                </NavLink>
+                <NavLink to="/colleges">Colleges</NavLink>
               </li>
               <div className="divider"></div>
               <li className="lg:hidden list-none">
+                <NavLink to="/admission">Admission</NavLink>
+              </li>
+              <div className="divider"></div>
+              <li className="lg:hidden list-none pb-2">
                 <NavLink to="/my-college">My College</NavLink>
               </li>
+
+              {user && <div className="divider"></div>}
+              <li className="lg:hidden list-none flex items-center justify-center gap-2">
+              {user && (
+                <>
+                  
+                  <Link title="View Profile" to="/profile">
+                    <img
+                      src={user?.photoURL}
+                      alt=""
+                      className="w-10 h-10 rounded-full"
+                    />
+                  </Link>
+
+                  <NavLink title="View Profile" to="/profile">
+                    {user?.displayName}
+                  </NavLink>
+                </>
+              )}</li>
+              <div className="divider"></div>
+              <li className="mt-5">{user ? (
+                <Link
+                  onClick={handleLogout}
+                  className="btn btn-outline btn-sm btn-success "
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn btn-outline btn-sm btn-success "
+                >
+                  Login
+                </Link>
+              )}</li>
+              
             </ul>
+
+
+
           </div>
         </nav>
       </div>

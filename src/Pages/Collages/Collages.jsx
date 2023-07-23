@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CollegeCardsSection from "../MainLayout/Home/CollegeCardsSection/CollegeCardsSection";
 import { RotatingTriangles } from "react-loader-spinner";
+import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 
 const Collages = () => {
   const [colleges, setColleges] = useState([]);
@@ -32,7 +33,8 @@ const Collages = () => {
 
 
   return (
-    <div className="py-16 max-w-7xl mx-auto">
+    <div className="py-10 max-w-7xl mx-auto">
+      <SectionTitle title={"Visit top ranked colleges"}></SectionTitle>
       <CollegeCardsSection colleges={colleges}></CollegeCardsSection>
     </div>
   );

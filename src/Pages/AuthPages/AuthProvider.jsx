@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 import React, { createContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../../ConfigPage/config.firebase";
 
 
@@ -60,8 +60,18 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider);
     }
 
+    const LoginWithGithub = () =>{
+        setLoading(true)
+        const provider = new GithubAuthProvider;
+        return signInWithPopup(auth, provider);
+    }
+
+    const handleForgetPassword = (email)=>{
+        return sendPasswordResetEmail(auth, email);
+    }
+
     const authInfo = {
-        loading, user, Login, Logout, Register, UpdateUser, LoginWithGoogle
+        loading, user, Login, Logout, Register, UpdateUser, LoginWithGoogle, LoginWithGithub, handleForgetPassword
     }
 
     return (
