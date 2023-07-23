@@ -1,0 +1,25 @@
+
+.research-img-div1{
+    background-image: url('https://i.ibb.co/tCZpdQq/image.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: darkslategray; */
+}
+
+.overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 1;
+
+    bottom: 0;
+}
+
+.overlay-content{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: -295px;
+    z-index: 2;
+}

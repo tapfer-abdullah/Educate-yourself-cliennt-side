@@ -1,0 +1,45 @@
+.hidden-ul{
+    text-align: center;
+    /* transform: translateY(10px); */
+    width: 100vw;
+    position: absolute;
+    right: -12px;
+    margin-top: 25px;
+    color: #0A0A0F;
+    /* opacity: .50; */
+    /* background: transparent; */
+    transition: 0.50s ease;
+
+}
+
+.hidden-ul li{
+    margin: -12px auto;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.btn-my-primary{
+    transition: .5s ease;
+}
+
+.btn-my-primary:hover{
+    box-shadow: 0 0 1rem #00effe;
+}
+
+
+.active{
+    /* color: #69BF70; */
+    color: #3EB075;
+    border-bottom: 2px solid #3EB075;
+}
+
+.title-text{
+    background: -webkit-linear-gradient(205deg, #0A0A0F, #3EB075);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+
+

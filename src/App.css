@@ -1,0 +1,45 @@
+/* 
+:root{
+  --body_background: white;
+  --body_color: black;
+}
+
+[data-theme="dark"]{
+  --body_background: black;
+  --body_color: white;
+}
+
+body{
+  background-color: var(--body_background);
+  color: var(--body_color);
+}
+
+*{
+  transition: all .3s ease-in-out;
+}
+
+.my-p{
+  color: red;
+}
+
+[data-theme="dark"] .my-p{
+  color: aqua;
+} */
+
+/* ------------------- */
+/* :root{
+  --bg-dark: black;
+  --bg-light: white;
+  --color-dark: aqua;
+  --color-light: red;
+}
+
+#dark .my-p{
+  background: #000;
+  color: pink;
+}
+
+#light .my-p{
+  background-color: white;
+  color: rebeccapurple;
+} */
