@@ -51,10 +51,15 @@ const NavigationBar = () => {
             </ul>
           </div>
 
+          <div className="hidden lg:block">
           <div className="flex gap-2 items-center">
-            <h3>{user?.displayName}</h3>
-            <img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full"/>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink title="View Profile" to="/profile">{user?.displayName}</NavLink>
+            <Link title="View Profile" to="/profile"><img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full"/></Link>
+            {
+              user ? <Link className="btn btn-outline btn-sm btn-success ">Logout</Link> :
+              <Link to="/login" className="btn btn-outline btn-sm btn-success ">Login</Link>
+            }
+          </div>
           </div>
 
           {/* nav bar for phone  */}

@@ -6,26 +6,30 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthPages/AuthProvider";
 import "./MyCollage.css";
 import Swal from "sweetalert2";
+import { RotatingTriangles } from "react-loader-spinner";
 
 const MyCollage = () => {
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
   const [reviewText, setReviewText] = useState("");
 
-
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-college?email=${user.email}`)
+    fetch(`http://localhost:5000/my-college?email=${user?.email}`)
       .then((res) => res.json())
       .then((c) => setData(c));
-  }, [user.email]);
+  }, [user]);
 
-//   console.log(data);
-//   console.log(user.email);
+  //   console.log(data);
+  //   console.log(user.email);
 
   if (data.college_image == null) {
-    return <div className="pt-14">You have not get admit yet!</div>;
+    return (
+      <div className="pt-28 text-3xl text-red font-semibold text-center ">
+        You have not get admit yet!
+      </div>
+    );
   }
 
   const onChange = (value) => {
@@ -33,36 +37,53 @@ const MyCollage = () => {
     setValue(value);
   };
 
-  const handleReview = e=>{
+  const handleReview = (e) => {
     const review = reviewText;
-    const newReview = {name: user.displayName ,userImg: user.photoURL, college_name: data?.college_name, ratings: data?.rating, review: review }
+    const newReview = {
+      name: user.displayName,
+      userImg: user.photoURL,
+      college_name: data?.college_name,
+      ratings: data?.rating,
+      review: review,
+    };
     // console.log(newReview)
 
     fetch("http://localhost:5000/review", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newReview),
-          })
-            .then((res) => res.json())
-            .then((message) => {
-            //   console.log(message);
-            if(message.insertedId){
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Review has given',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
-            });
-
-  }
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newReview),
+    })
+      .then((res) => res.json())
+      .then((message) => {
+        //   console.log(message);
+        if (message.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Review has given",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="pt-20">
+      {loading && (
+        <div className="flex justify-center pt-28">
+          <RotatingTriangles
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="rotating-triangels-loading"
+            wrapperStyle={{}}
+            wrapperClass="rotating-triangels-wrapper"
+          />
+        </div>
+      )}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-center mx-auto max-w-7xl">
         <div>
           <img
@@ -148,7 +169,9 @@ const MyCollage = () => {
           <button className="btn btn-sm btn-circle cross-btn absolute btn-error hover:bg-my-bg2 border-none right-2 top-2">
             ✕
           </button>
-          <h3 className="font-bold text-lg text-center text-my-primary">Give Review</h3>
+          <h3 className="font-bold text-lg text-center text-my-primary">
+            Give Review
+          </h3>
           <div className="divider"></div>
           <div className="flex gap-3 justify-center items-center mb-2">
             <ReactStarsRating
@@ -160,7 +183,7 @@ const MyCollage = () => {
           </div>
           <div>
             <textarea
-            onChange={e => setReviewText(e.target.value)}
+              onChange={(e) => setReviewText(e.target.value)}
               name="reviewMessage"
               placeholder="Write your review...."
               id=""
@@ -169,7 +192,12 @@ const MyCollage = () => {
             ></textarea>
           </div>
           <div className="review-btn-div">
-            <input onClick={handleReview} className="review-btn" type="submit" value="Give Review" />
+            <input
+              onClick={handleReview}
+              className="review-btn"
+              type="submit"
+              value="Give Review"
+            />
           </div>
         </form>
       </dialog>

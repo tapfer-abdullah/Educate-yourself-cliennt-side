@@ -19,15 +19,6 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) =>{
             if(loggedUser){
                 setUser(loggedUser);
-
-                // axios.post('https://assignment12-server-sepia.vercel.app/jwt', {loggedUser})
-                //   .then(function (response) {
-                //     console.log(response.data);
-                //     localStorage.setItem("access-token", response.data);
-                //   })
-                //   .catch(function (error) {
-                //     console.log(error);
-                //   });
             }
             else{
                 setUser(null);

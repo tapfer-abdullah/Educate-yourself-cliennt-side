@@ -3,6 +3,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import ReactStarsRating from "react-awesome-stars-rating";
+import { RotatingTriangles } from "react-loader-spinner";
 
 const CollegeDetails = () => {
   const data = useLoaderData();
@@ -20,7 +21,7 @@ const CollegeDetails = () => {
     rating,
     sports_details
   } = data;
-
+  
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-20 items-center mx-auto max-w-7xl">
       <div>

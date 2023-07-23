@@ -26,13 +26,13 @@ form{
 }
 
 .submit-btn{
-    background-color: #fec722;
+    background-color: #fec722 !important;
     border: none;
     transition: all .5s ease;
     color: black;
     font-weight: 600;
 }
 .submit-btn:hover{
-    background-color: #3EB075;
+    background-color: #3EB075 !important;
     color: white;
 }

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import CollegeCardsSection from "../MainLayout/Home/CollegeCardsSection/CollegeCardsSection";
+import { RotatingTriangles } from "react-loader-spinner";
 
 const Collages = () => {
   const [colleges, setColleges] = useState([]);
@@ -14,9 +15,21 @@ const Collages = () => {
       });
   }, []);
 
-  if(colleges.length == 0){
-    return <p className="pt-20 text-center">Loading.......</p>
+  if (colleges.length == 0) {
+    return (
+      <div className="flex justify-center pt-28">
+        <RotatingTriangles
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="rotating-triangels-loading"
+          wrapperStyle={{}}
+          wrapperClass="rotating-triangels-wrapper"
+        />
+      </div>
+    );
   }
+
 
   return (
     <div className="py-16 max-w-7xl mx-auto">

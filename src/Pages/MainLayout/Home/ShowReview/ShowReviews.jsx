@@ -15,6 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import ReactStarsRating from "react-awesome-stars-rating";
 import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
+import { RotatingTriangles } from "react-loader-spinner";
 
 const ShowReviews = () => {
 
@@ -25,6 +26,21 @@ const ShowReviews = () => {
     .then(res => res.json())
     .then(data => setReview(data))
   }, [])
+
+  if (review.length == 0) {
+    return (
+      <div className="flex justify-center mt-20">
+        <RotatingTriangles
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="rotating-triangels-loading"
+          wrapperStyle={{}}
+          wrapperClass="rotating-triangels-wrapper"
+        />
+      </div>
+    );
+  }
 
   // console.log("aa", review)
 
