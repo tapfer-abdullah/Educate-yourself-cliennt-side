@@ -19,7 +19,7 @@ const CollegeCard = ({ college }) => {
     rating,
   } = college;
   return (
-    <div className=" w-[95%] md:w-[400px] shadow-lg relative college-card">
+    <div className=" w-[95%] mx-auto md:w-[400px] shadow-lg relative college-card">
       <div className="college-img h-60 relative">
         <div className="hover-link bg-opacity-50">
           <Link to={`/colleges/${_id}`} className="uppercase apply-btn">
@@ -29,7 +29,7 @@ const CollegeCard = ({ college }) => {
         <img src={college_image} className="w-full h-full" alt="" />
       </div>
 
-      <div className="p-3 text-my-p text-justify">
+      <div className="p-4 text-my-p text-justify">
         <h3
           className="text-xl mb-2 font-semibold text-my-text">
           {college_name}

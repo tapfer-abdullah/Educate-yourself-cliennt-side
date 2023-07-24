@@ -13,7 +13,7 @@ const ResearchPaper = () => {
 
         
 
-        <div className="relative">
+        <div className="relative mx-5 lg:mx-auto">
           <img
             src="https://www.insidehighered.com/sites/default/files/media/file-picture-id696301002.jpg"
             alt=""
@@ -31,7 +31,8 @@ const ResearchPaper = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
+
+        <div className="relative mx-5 lg:mx-auto">
           <img
             src="https://www.prostudyguides.com/wp-content/uploads/2020/09/All-Types-of-Research-Papers-in-English.jpg"
             alt=""
@@ -49,7 +50,8 @@ const ResearchPaper = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
+
+        <div className="relative mx-5 lg:mx-auto">
           <img
             src="https://cdn.editage.com/insights/editagecom/production/styles/detail_page_image/public/Writing%20research%20papers%20in%20English%20A%20guide%20for%20non-native%20speakers%20%28original%29_0.jpg?itok=jeMRxuob"
             alt=""
@@ -67,7 +69,8 @@ const ResearchPaper = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
+
+        <div className="relative mx-5 lg:mx-auto">
           <img
             src="https://www.thoughtco.com/thmb/fytBUcjzmxHxCmIQBSIzNefzPIs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/laptop-computer-with-books--pen-and-yellow-legal-pad-92259124-5c673ef9c9e77c00014762dc.jpg"
             alt=""

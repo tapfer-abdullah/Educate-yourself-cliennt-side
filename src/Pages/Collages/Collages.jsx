@@ -8,8 +8,7 @@ const Collages = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/colleges`)
-      // fetch(`https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`)
+    fetch(`https://educate-yourself-server-side.vercel.app/colleges`)
       .then((res) => res.json())
       .then((data) => {
         setColleges(data);

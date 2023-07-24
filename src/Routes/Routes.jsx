@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/colleges/:id",
         element: <PrivateRoute><CollegeDetails></CollegeDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/colleges/${params.id}`)
+        loader: ({params}) => fetch(`https://educate-yourself-server-side.vercel.app/colleges/${params.id}`)
       },
       {
         path: "/profile",

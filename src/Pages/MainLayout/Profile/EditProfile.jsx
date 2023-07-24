@@ -14,7 +14,7 @@ const EditProfile = () => {
   const [collegeID, setCollegeID] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProfile?email=${user?.email}`)
+    fetch(`https://educate-yourself-server-side.vercel.app/myProfile?email=${user?.email}`)
       .then((res) => res.json())
       .then((c) => setData(c));
   }, [user]);
@@ -47,7 +47,7 @@ const EditProfile = () => {
     // console.log(updatedData);
 
 
-    fetch(`http://localhost:5000/myProfile/${_id}`, {
+    fetch(`https://educate-yourself-server-side.vercel.app/myProfile/${_id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const EditProfile = () => {
 
   return (
     <div className="pt-14 max-w-7xl mx-auto">
-      <div className="w-full grid grid-cols-2 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center">
         <div>
           <img src={updateImg} alt="" />
         </div>
@@ -107,7 +107,7 @@ const EditProfile = () => {
           </h3>
           <div className="divider"></div>
 
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>First Name</h4>
               <input
@@ -131,7 +131,7 @@ const EditProfile = () => {
               />
             </div>
           </div>
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>University</h4>
               <select onChange={handleChange} name="collegeId">
@@ -159,7 +159,7 @@ const EditProfile = () => {
               />
             </div>
           </div>
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>Phone Number</h4>
               <input

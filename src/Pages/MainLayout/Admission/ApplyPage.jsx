@@ -49,7 +49,7 @@ const ApplyPage = () => {
           // console.log(candidateInfo);
           //   console.log(imageResponse);
 
-          fetch("http://localhost:5000/admission", {
+          fetch("https://educate-yourself-server-side.vercel.app/admission", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const ApplyPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto pt-14">
-      <div className="w-full grid grid-cols-2 items-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center">
         <div>
           <img src={admissionImg} alt="" />
         </div>
@@ -86,7 +86,7 @@ const ApplyPage = () => {
           </h3>
           <div className="divider"></div>
 
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>First Name</h4>
               <input
@@ -106,7 +106,7 @@ const ApplyPage = () => {
               />
             </div>
           </div>
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>Subject</h4>
               <input
@@ -126,7 +126,7 @@ const ApplyPage = () => {
               />
             </div>
           </div>
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>Phone Number</h4>
               <input
@@ -146,7 +146,7 @@ const ApplyPage = () => {
               />
             </div>
           </div>
-          <div className="two-input-field">
+          <div className="two-input-field lg:flex gap-5">
             <div>
               <h4>Date of birth</h4>
               <input required type="date" {...register("birth")} />

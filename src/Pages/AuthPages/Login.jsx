@@ -107,8 +107,8 @@ const Login = () => {
   return (
     <>
     
-      <div className="flex justify-center items-center">
-      <Link to="/" className="text-3xl font-bold text-center title-text">Educate YourSelf</Link>
+      <div className="flex flex-col lg:flex-row justify-center items-center">
+      <Link to="/" className="pt-10 lg:pt-0 text-3xl font-bold text-center title-text">Educate YourSelf</Link>
         <div className="p-5 rounded-lg">
           <div className="hero p-5 md:px-10 md:py-5 shadow-lg rounded-lg shadow-slate-950/50 bg-my-bg1">
             <form

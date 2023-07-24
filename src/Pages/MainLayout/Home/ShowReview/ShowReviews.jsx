@@ -22,7 +22,7 @@ const ShowReviews = () => {
   const [review, setReview] = useState([]);
 
   useEffect(()=>{
-    fetch("http://localhost:5000/reviews")
+    fetch("https://educate-yourself-server-side.vercel.app/reviews")
     .then(res => res.json())
     .then(data => setReview(data))
   }, [])
@@ -48,7 +48,7 @@ const ShowReviews = () => {
     <>
       <SectionTitle title={"What Students Say"}></SectionTitle>
 
-      <div className="w-full md:w-1/2 mx-auto -mt-10">
+      <div className="w-[95%] md:w-1/2 mx-auto -mt-10">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

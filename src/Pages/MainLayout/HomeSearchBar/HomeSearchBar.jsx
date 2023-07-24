@@ -7,7 +7,7 @@ const HomeSearchBar = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/colleges?name=${search || 0}`)
+    fetch(`https://educate-yourself-server-side.vercel.app/colleges?name=${search || 0}`)
       // fetch(`https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`)
       .then((res) => res.json())
       .then((data) => {

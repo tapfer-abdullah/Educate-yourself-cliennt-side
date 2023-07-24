@@ -7,7 +7,7 @@ const PopularColleges = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/colleges?limit=${3}`)
+    fetch(`https://educate-yourself-server-side.vercel.app/colleges?limit=${3}`)
       // fetch(`https://toy-box-server.vercel.app/all-toys?limit=${limit}&name=${search}`)
       .then((res) => res.json())
       .then((data) => {

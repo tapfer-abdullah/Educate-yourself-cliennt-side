@@ -9,7 +9,7 @@ const Admission = () => {
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/colleges`)
+    fetch(`https://educate-yourself-server-side.vercel.app/colleges`)
       .then((res) => res.json())
       .then((data) => {
         setColleges(data);
@@ -32,14 +32,14 @@ const Admission = () => {
   }
 
   return (
-    <div className="pt-14 max-w-7xl mx-auto">
+    <div className="pt-5 lg:pt-14 max-w-7xl mx-auto">
       <SectionTitle title={"Admission Open"}></SectionTitle>
 
-      <div className="px-20">
+      <div className="px-5 lg:px-20">
         {colleges.map((c) => (
           <>
-            <div className="flex justify-between items-center my-5 bg-my-bg2 ">
-              <div className="w-[40%] h-[200px]">
+            <div className="lg:flex justify-between items-center my-5 bg-my-bg2 ">
+              <div className="w-full lg:w-[40%] h-[200px]">
                 <img
                   src={c.college_image}
                   alt=""
@@ -47,7 +47,7 @@ const Admission = () => {
                 />
               </div>
 
-              <div className="font-semibold">
+              <div className="font-semibold p-5 lg:p-0">
                 <Link
             to={`/admission/${c._id}`} className="text-3xl my-2">{c.college_name}</Link>
                 <p className="text-lg my-2">
@@ -63,7 +63,7 @@ const Admission = () => {
                 </p>
               </div>
 
-              <div className="px-14 flex flex-col">
+              <div className="px-14 flex flex-col text-center">
                 <Link to={`/colleges/${c._id}`} className="uppercase apply-btn my-2 ">View Details</Link>
                 <Link to={`/admission/${c._id}`} className="uppercase apply-btn my-2 ">Apply Now</Link>
               </div>

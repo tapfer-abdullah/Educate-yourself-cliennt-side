@@ -16,7 +16,9 @@ const MyCollage = () => {
   const { user, loading } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-college?email=${user?.email}`)
+    fetch(
+      `https://educate-yourself-server-side.vercel.app/my-college?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((c) => setData(c));
   }, [user]);
@@ -48,7 +50,7 @@ const MyCollage = () => {
     };
     // console.log(newReview)
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://educate-yourself-server-side.vercel.app/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +90,7 @@ const MyCollage = () => {
         <div>
           <img
             src={data?.college_image}
-            className="w-[620px] h-[450px]"
+            className="lg:w-[620px] lg:h-[450px]"
             alt=""
           />
         </div>
@@ -111,7 +113,7 @@ const MyCollage = () => {
             </p>
             <Link
               onClick={() => window.my_modal_3.showModal()}
-              className="uppercase apply-btn text-my-text"
+              className="uppercase apply-btn text-my-text hidden lg:block"
             >
               Give Review
             </Link>
@@ -151,14 +153,23 @@ const MyCollage = () => {
               </span>
               {data?.total_research}
             </p>
-            <p className="flex items-center gap-2">
-              <ReactStarsRating
-                className="flex my-5"
-                isEdit={false}
-                value={data?.rating}
-              />
-              <span>{data?.rating}</span>
-            </p>
+
+            <div className="flex justify-between items-center">
+              <p className="flex items-center gap-2">
+                <ReactStarsRating
+                  className="flex my-5"
+                  isEdit={false}
+                  value={data?.rating}
+                />
+                <span className="text-lg">{data?.rating}</span>
+              </p>
+              <Link
+                onClick={() => window.my_modal_3.showModal()}
+                className="uppercase apply-btn text-my-text lg:hidden"
+              >
+                Give Review
+              </Link>
+            </div>
           </div>
         </div>
       </div>

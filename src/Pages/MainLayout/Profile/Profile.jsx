@@ -10,7 +10,7 @@ const Profile = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProfile?email=${user?.email}`)
+    fetch(`https://educate-yourself-server-side.vercel.app/myProfile?email=${user?.email}`)
       .then((res) => res.json())
       .then((c) => setData(c));
   }, [user]);
@@ -50,12 +50,12 @@ const Profile = () => {
 
   return (
     <div className="pt-14 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 pt-20 px-20 items-center mx-auto max-w-7xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 pt-20 mb-20 px-5 lg:px-20 items-center ">
         <div>
-          <img src={photo} className="w-[620px] h-[450px]" alt="" />
+          <img src={photo} className="lg:w-[620px] lg:h-[450px]" alt="" />
         </div>
 
-        <div className="p-3 text-my-p text-justify bg-my-bg2 h-[450px] px-20 text-lg">
+        <div className="p-3 text-my-p text-justify bg-my-bg2 h-[450px] px-3 lg:px-20 text-lg">
           <h3 className="text-3xl font-semibold my-5 text-center">
             Information of{" "}
             <span className="text-my-primary">
@@ -97,7 +97,7 @@ const Profile = () => {
             {subject}
           </p>
 
-          <div className="flex items-center justify-between">
+          <div className="lg:flex items-center justify-between">
             <p className="my-2">
               <span className="font-semibold text-my-text">
                 Admission Date:{" "}
@@ -105,7 +105,7 @@ const Profile = () => {
               {applicationTime?.slice(0, 10)}
             </p>
 
-            <Link to={`/profile/${_id}`} className="flex items-center gap-3 btn btn-sm btn-success text-white hover:bg-my-secondary hover:shadow-lg">
+            <Link to={`/profile/${_id}`} className="mt-3 lg:mt-0 flex items-center gap-3 btn btn-sm btn-success text-white hover:bg-my-secondary hover:shadow-lg">
               <FaUserEdit className="text-lg"></FaUserEdit>
               <span>Edit Info</span>
             </Link>

@@ -147,7 +147,7 @@ const Register = () => {
               </h3> */}
 
               <div className="card-body">
-                <div className="flex gap-3 justify-center w-full">
+                <div className="lg:flex gap-3 justify-center w-full">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Name</span>
@@ -185,7 +185,7 @@ const Register = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-3 justify-center w-full">
+                <div className="lg:flex gap-3 justify-center w-full">
                   <div onBlur={handleEmail} className="form-control">
                     <label className="label">
                       <span className="label-text">Email</span>
