@@ -4,8 +4,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import ReactStarsRating from "react-awesome-stars-rating";
 import { RotatingTriangles } from "react-loader-spinner";
+import useTitle from "../../Hooks/useTitle";
 
 const CollegeDetails = () => {
+  useTitle("College Details");
   const data = useLoaderData();
   // console.log(data);
   const {
@@ -25,10 +27,10 @@ const CollegeDetails = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 pt-20 items-center mx-auto max-w-7xl">
       <div>
-        <img src={college_image} className="w-[620px] h-[450px]" alt="" />
+        <img src={college_image} className="w-[620px] h-[450px] mx-auto" alt="" />
       </div>
 
-      <div className="p-3 text-my-p text-justify">
+      <div className="p-5 text-my-p text-justify">
         <h3 className="text-3xl font-semibold my-5 text-center">
           Details of <span className="text-my-primary">{college_name}</span>
         </h3>

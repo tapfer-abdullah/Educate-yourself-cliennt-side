@@ -7,8 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const { UpdateUser, Register, LoginWithGoogle, LoginWithGithub } =
     useContext(AuthContext);
   const [seePass, setSeePass] = useState(true);

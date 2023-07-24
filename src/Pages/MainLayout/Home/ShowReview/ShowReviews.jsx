@@ -48,7 +48,7 @@ const ShowReviews = () => {
     <>
       <SectionTitle title={"What Students Say"}></SectionTitle>
 
-      <div className="w-[95%] md:w-1/2 mx-auto -mt-10">
+      <div className="w-[95%] lg:w-1/2 mx-auto -mt-10">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

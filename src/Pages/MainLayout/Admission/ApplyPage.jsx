@@ -7,8 +7,10 @@ import "./ApplyPage.css";
 
 import admissionImg from "./../../../assets/admission2.png";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const ApplyPage = () => {
+  useTitle("Apply Page");
   const [userImage, setUserImage] = useState("");
   const navigate = useNavigate();
   const params = useParams();

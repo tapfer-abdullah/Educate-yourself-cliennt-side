@@ -9,8 +9,10 @@ import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const [seePass, setSeePass] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();

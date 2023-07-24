@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import CollegeCardsSection from "../MainLayout/Home/CollegeCardsSection/CollegeCardsSection";
 import { RotatingTriangles } from "react-loader-spinner";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
+import useTitle from "../../Hooks/useTitle";
 
 const Collages = () => {
+  useTitle("Colleges");
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {

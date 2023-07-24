@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import './Profile.css';
 import updateImg from "./../../../assets/update.png";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const EditProfile = () => {
+  useTitle("Edit Profile");
   const { user, loading } = useContext(AuthContext);
   const [data, setData] = useState({});
   const [college, setCollege] = useState("");

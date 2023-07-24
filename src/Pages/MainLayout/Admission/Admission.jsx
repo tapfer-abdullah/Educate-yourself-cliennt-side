@@ -4,8 +4,10 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { Link } from "react-router-dom";
 import ReactStarsRating from "react-awesome-stars-rating";
 import { RotatingTriangles } from "react-loader-spinner";
+import useTitle from "../../../Hooks/useTitle";
 
 const Admission = () => {
+  useTitle("Admission");
   const [colleges, setColleges] = useState([]);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const Admission = () => {
         {colleges.map((c) => (
           <>
             <div className="lg:flex justify-between items-center my-5 bg-my-bg2 ">
-              <div className="w-full lg:w-[40%] h-[200px]">
+              <div className="w-full lg:w-[40%] h-[200px] md:h-[300px] lg:h-[200px]">
                 <img
                   src={c.college_image}
                   alt=""

@@ -6,8 +6,10 @@ import HomeSearchBar from "../HomeSearchBar/HomeSearchBar";
 import Banner from "./Banner/Banner";
 import PopularColleges from "./PopularColleges/PopularColleges";
 import ResearchPaper from "./ResearchPaper/ResearchPaper";
+import useTitle from "../../../Hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div>
       <HomeSearchBar></HomeSearchBar>

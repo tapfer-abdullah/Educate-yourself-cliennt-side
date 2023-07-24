@@ -4,8 +4,10 @@ import { AuthContext } from "../../AuthPages/AuthProvider";
 import { RotatingTriangles } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { FaUser, FaUserEdit } from "react-icons/fa";
+import useTitle from "../../../Hooks/useTitle";
 
 const Profile = () => {
+  useTitle("Profile");
   const { user, loading } = useContext(AuthContext);
   const [data, setData] = useState({});
 

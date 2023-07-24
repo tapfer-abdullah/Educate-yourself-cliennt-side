@@ -7,8 +7,10 @@ import { AuthContext } from "../AuthPages/AuthProvider";
 import "./MyCollage.css";
 import Swal from "sweetalert2";
 import { RotatingTriangles } from "react-loader-spinner";
+import useTitle from "../../Hooks/useTitle";
 
 const MyCollage = () => {
+  useTitle("My College");
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
   const [reviewText, setReviewText] = useState("");
@@ -95,7 +97,7 @@ const MyCollage = () => {
           />
         </div>
 
-        <div className="p-3 text-my-p text-justify">
+        <div className="p-5 text-my-p text-justify">
           <h3 className="text-3xl font-semibold my-5 text-center">
             <span className="text-my-primary">{data?.college_name}</span>
           </h3>
